@@ -2,30 +2,9 @@
 version: '2.2'
 
 services:
-  app-front-db:
-    image: percona:ps-5.6
-    platform: linux/amd64
-    container_name: app-front-db
-    labels:
-      data: mysql
-    hostname: app-front-db
-    environment:
-      - MYSQL_ROOT_PASSWORD=gr
-      - MYSQL_USER=gr
-      - MYSQL_PASSWORD=gr
-      - MYSQL_DATABASE=gr_front
+  the-payday:
+    build:
+      context: ./
     ports:
-      - "3366:3306/tcp"
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin -h 'localhost' -u gr -pgr ping --silent"]
-      interval: 30s
-      timeout: 30s
-      retries: 3
-#  app-front:
-#    build:
-#      context: ./
-#    ports:
-#      - "5420:5420"
-#    restart: on-failure
-#    depends_on:
-#      - app-front-db
+      - "3000:3000"
+    restart: on-failure
