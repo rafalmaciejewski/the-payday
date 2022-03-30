@@ -15,6 +15,6 @@ export class PaymentsController {
 
   private getPaymentDates(date: Date = new Date()): string[] {
     const paymentDates = this.paymentsService.getPaymentDates(date);
-    return paymentDates.map((paymentDate) => paymentDate.toISOString());
+    return paymentDates.map((paymentDate) => paymentDate.toISOString().split('T')[0]);
   }
 }
